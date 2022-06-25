@@ -10,7 +10,7 @@ stage('SonarQube Analysis') {
       sh "${scannerHome}/bin/sonar-scanner \
         -D sonar.login=admin \
         -D sonar.password=admin123 \
-        -D sonar.projectKey=my-app \
+        -D sonar.projectKey=my-app1 \
         -D sonar.sources=src/main/ \
         -D sonar.test=src/test/ \
         -D sonar.exclusions=vendor/**,resources/**,**/*.java \
