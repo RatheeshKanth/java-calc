@@ -1,13 +1,22 @@
-node {
-  stage('SCM') {
-    checkout scm
-  }
+pipeline {
+  	agent{
+    		docker{
+			image 'maven'
+			args '-v $HOME /.m2:/root/.m2 '
+		}
+  	}
+stages{
   stage('SonarQube Analysis') {
-    def mvn = tool 'Default Maven';
-    withSonarQubeEnv('SonarServer') {
-      sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=my-app"
-    }
+	steps{
+	script{
+    	withSonarQubeEnv('SonarServer') {
+      	sh "mvn sonar:sonar "
+    	}
+	sh "mvn clean install"
+	}
+	}
   }
+}
 }
 
 
