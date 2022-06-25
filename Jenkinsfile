@@ -14,7 +14,7 @@ stage('SonarQube Analysis') {
         -D sonar.sources=.\
         -D sonar.test=src/test/ \
         -D sonar.exclusions=vendor/**,resources/**,**/*.java \
-        -D sonar.host.url=http://54.175.78.57:9000/"
+        -D sonar.host.url=http://3.91.72.68:9000/"
         }
 }
 }
